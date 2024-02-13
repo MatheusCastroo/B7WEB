@@ -1,5 +1,10 @@
 <?php
-require_once 'config.php';
+require 'config.php';
+$lista = [];
+$sql = $pdo->query("SELECT * FROM usuarios");
+if($sql->rowCount() > 0) {
+    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 <a href="adicionar.php">Adicionar Usuário</a>
 <table border="1" width="100%">
@@ -7,6 +12,17 @@ require_once 'config.php';
     <th>ID</th>
     <th>NOME</th>
     <th>EMAIL</th>
-    <th>AÇOES</th>
+    <th>AÇÕES</th>
 </tr>
+<?php foreach ($lista as $usuario):?>
+    <tr>
+        <td><?php echo $usuario['id'];?></td>
+        <td><?php echo $usuario['nome'] ?></td>
+        <td><?php echo $usuario['email']?></td>
+        <td>
+            <a href="editar.php?id=<?=$usuario['id'];?>">[ Editar ]</a>
+            <a href="excluir.php?id=<?=$usuario['id'];?>" onclick="return confirm('Deseja excluir?')">[ Excluir ]</a>
+        </td>
+    </tr>
+<?php endforeach ?>
 </table>
