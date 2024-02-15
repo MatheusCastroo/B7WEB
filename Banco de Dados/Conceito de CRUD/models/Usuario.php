@@ -27,6 +27,7 @@ class Usuario {
 interface UsuarioDAO {
     public function add(Usuario $u); //Objeto da classe usuario
     public function findAll();//Retornar uma lista de todos os usuarios
+    public function findByEmail($email);
     public function findById($id); //Retornar um ID
     public function update(Usuario $u); // receber objeto de usuário
     public function delete ($id); //Deletar o ID

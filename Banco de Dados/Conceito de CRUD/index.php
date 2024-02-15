@@ -16,13 +16,13 @@ $lista = $usuarioDao->findAll();
 </tr>
 <?php foreach ($lista as $usuario):?>
     <tr>
-        <td><?php $usuario->getId();?></td>
-        <td><?php $usuario->getNome(); ?></td>
-        <td><?php $usuario->getEmail();?></td>
+        <td><?=$usuario->getId();?></td>
+        <td><?=$usuario->getNome(); ?></td>
+        <td><?=$usuario->getEmail();?></td>
         <td>
-            <a href="editar.php?id=<?=$usuario['id'];?>">[ Editar ]</a>
-            <a href="excluir.php?id=<?=$usuario['id'];?>" onclick="return confirm('Deseja excluir?')">[ Excluir ]</a>
+            <a href="editar.php?id=<?=$usuario->getId();?>">[ Editar ]</a>
+            <a href="excluir.php?id=<?=$usuario->getId();?>" onclick="return confirm('Deseja excluir?')">[ Excluir ]</a>
         </td>
     </tr>
-<?php endforeach ?>
+<?php endforeach; ?>
 </table>
