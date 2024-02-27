@@ -1,28 +1,42 @@
 <?php
 $arquivo = 'logowebwe.png';
-$maxWidth = 200;
-$maxHeight = 200;
-
+$width = 300;
+$heigth = 300;
 list($originalWidth, $originalHeight) = getimagesize($arquivo);
 $ratio = $originalWidth / $originalHeight;
-$ratioDest = $maxWidth / $maxHeight;
-
+$ratioDest = $width / $heigth;
 $finalWidth = 0;
-$finalHeight = 0;
-
+$finalHeigth = 0;
+$finalX = 0;
+$finalY = 0;
 if ($ratioDest > $ratio) {
-    $finalWidth = $maxHeight * $ratio;
-    $finalHeight = $maxHeight;
+    $finalWidth = $heigth * $ratio;
+    $finalHeigth = $heigth;
 } else {
-    $finalHeight = $maxWidth / $ratio;
-    $finalWidth = $maxWidth;
+    $finalHeigth = $width / $ratio;
+    $finalWidth = $width;
 }
-
-$imagem = imagecreatetruecolor($finalWidth, $finalHeight);
-$originalImg = imagecreatefrompng($arquivo);
-
-imagecopyresampled($imagem, $originalImg, 0, 0, 0, 0, $finalWidth, $finalHeight, $originalWidth, $originalHeight);
-
-header("Content-Type: image/png");
-imagepng($imagem, null, 100);
-
+if ($finalWidth < $width) {
+    $finalWidth = $width;
+    $finalHeigth = $width / $ratio;
+    $finalY = - (($finalHeigth - $heigth) / 2);
+} else {
+    $finalHeigth = $heigth;
+    $finalWidth = $heigth * $ratio;
+    $finalX = - (($finalWidth - $width) / 2);
+}
+$imagem = imagecreatetruecolor($width, $heigth);
+$originalImage = imagecreatefrompng($arquivo);
+imagecopyresampled(
+    $imagem,
+    $originalImage,
+    $finalX,
+    $finalY,
+    0,
+    0,
+    $finalWidth,
+    $finalHeigth,
+    $originalWidth,
+    $originalHeight
+);
+imagejpeg($imagem, 'logowebwe.png', 100);
