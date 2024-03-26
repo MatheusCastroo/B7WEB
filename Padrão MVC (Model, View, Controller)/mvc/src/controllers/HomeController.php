@@ -11,6 +11,9 @@ class HomeController extends Controller {
     public function fotos() {
         echo 'fotos';
     }
+    public function foto($parametros) {
+        echo 'Unica Foto';
+    }
     public function sobre() {
         $this->render('sobre');
     }
