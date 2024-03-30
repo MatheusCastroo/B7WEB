@@ -6,20 +6,20 @@ use \core\Controller;
 class HomeController extends Controller {
 
     public function index() {
-        $this->render('home');
+       $this->render('home');
     }
     public function fotos() {
-        echo 'fotos';
+    $this->render('fotos');
     }
     public function foto($parametros) {
-        echo 'Unica Foto';
+        echo "Acessando a foto: ".$parametros['id'];
+        
     }
     public function sobre() {
         $this->render('sobre');
     }
 
     public function sobreP($args) {
-        print_r($args);
+        echo 'Opa, '.$args['nome'];
     }
-
 }
