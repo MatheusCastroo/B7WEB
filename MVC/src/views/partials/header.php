@@ -6,8 +6,8 @@
 
 <body>
 
-    <head>
+    <header>
     <h1>Titulo do Site</h1>
         <hr/>
-    </head>
+    </header>
 

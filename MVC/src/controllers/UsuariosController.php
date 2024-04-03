@@ -9,7 +9,10 @@ class UsuariosController extends Controller
 {
 
     public function add() {
-        echo 'Add';
+        $this->render('add');
+    }
+    public function addAction() {
+        echo 'recebido';
     }
    
 }
