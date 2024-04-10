@@ -50,6 +50,8 @@ class UsuariosController extends Controller
     } $this->redirect('/usuario/'.$args['id'].'/editar');
 }
     public function del($args) {
-        
+        Usuario::delete()->where('id', $args['id'])->execute();
+        $this->redirect('/');
     }
 }
+
